@@ -1,8 +1,8 @@
 var counter;
 var nbMystere = 0;
-var messError = "On a dit un nombre entier";
-var messLose = "C'est perdu ! Le nombre Mystère était";
-var messWin = "C'est gagné ! Le nombre Mystère était bien";
+var messError = "Veuillez insérer un nombre entier s'il vous plaît";
+var messLose = "Vous avez perdu ! Le nombre mystère était";
+var messWin = "Vous avez gagné ! Le nombre mystère était bien";
 var messPlus = "C'est plus";
 var messMoins = "C'est moins";
 var buttonValider;
@@ -21,10 +21,10 @@ function init() { // fonction appelée au chargement de la page
 }
 
 function calculer() { // fonction appelée lors du clic sur le bouton
-    var valeurInput = inputElement.value;
-    var entierInput = parseInt(valeurInput); // essaye de convertir en entier
+    var valueInput = inputElement.value;
+    var intInput = parseInt(valueInput); // essaye de convertir en entier
     if (counter !== 6) {
-        if (isNaN(entierInput)) {
+        if (isNaN(intInput)) {
             messageReponse(messError, "black");
             ++counter;
             return;
