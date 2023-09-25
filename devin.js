@@ -1,28 +1,28 @@
 var counter;
-var nbMystere = 0;
+var mysteryNumber = 0;
 let messError = "Veuillez insérer un nombre entier s'il vous plaît";
 let messLose = "Vous avez perdu ! Le nombre mystère était";
 let messWin = "Vous avez gagné ! Le nombre mystère était bien";
-let messPlus = "C'est plus";
-let messMoins = "C'est moins";
-var buttonValider;
+let messPlus = "Votre nombre est trop petit";
+let messMoins = "Votre nombre est trop grand";
+var buttonValidate;
 var inputElement;
 var reponse;
 
 function init() { // fonction appelée au chargement de la page
     counter = 1;
-    nbMystere = Math.floor(Math.random() * 101);
-    console.log(nbMystere);
-    buttonValider = document.getElementById("valider");
-    buttonValider.textContent = "Essayer";
+    mysteryNumber = Math.floor(Math.random() * 101);
+    console.log(mysteryNumber);
+    buttonValidate = document.getElementById("valider");
+    buttonValidate.textContent = "Essayer";
     inputElement = document.getElementById("input");
     reponse = document.getElementById("message");
-    buttonValider.addEventListener("click", calculate);
+    buttonValidate.addEventListener("click", calculate);
 }
 
 function calculate() { // fonction appelée lors du clic sur le bouton
     var valueInput = inputElement.value;
-    var intInput = parseInt(valueInput); // essaye de convertir en entier
+    var intInput = parseInt(valueInput); // conversion en entier
     if (counter !== 6) {
         if (isNaN(intInput)) {
             messageReponse(messError, "black");
@@ -31,19 +31,19 @@ function calculate() { // fonction appelée lors du clic sur le bouton
         }
     }
 
-    if (intInput === nbMystere) {
-        messageReponse(messWin, "green", nbMystere);
+    if (intInput === mysteryNumber) {
+        messageReponse(messWin, "green", mysteryNumber);
         replay();
         return;
     }
-    else if (intInput < nbMystere) {
+    else if (intInput < mysteryNumber) {
         messageReponse(messPlus, "blue");
     }
     else {
         messageReponse(messMoins, "blue");
     }
     if (counter === 6) {
-        messageReponse(messLose, "red", nbMystere);
+        messageReponse(messLose, "red", mysteryNumber);
         replay();
         return;
     }
@@ -56,12 +56,12 @@ function messageReponse(messageWanted, color, mystere) {
 }
 
 function replay() {
-    buttonValider.textContent = "Rejouer";
-    buttonValider.removeEventListener("click", calculate);
-    buttonValider.addEventListener("click", function reset() {
+    buttonValidate.textContent = "Rejouer";
+    buttonValidate.removeEventListener("click", calculate);
+    buttonValidate.addEventListener("click", function reset() {
         reponse.innerHTML = "";
         inputElement.value = "";
-        buttonValider.removeEventListener("click", reset);
+        buttonValidate.removeEventListener("click", reset);
         init();
     });
 }
