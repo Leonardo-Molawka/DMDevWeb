@@ -31,12 +31,12 @@ function calculer() { // fonction appelée lors du clic sur le bouton
         }
     }
 
-    if (entierInput === nbMystere) {
+    if (intInput === nbMystere) {
         messageReponse(messWin, "green", nbMystere);
         rejouer();
         return;
     }
-    else if (entierInput < nbMystere) {
+    else if (intInput < nbMystere) {
         messageReponse(messPlus, "blue");
     }
     else {
